@@ -1,6 +1,12 @@
-Here is the basic gist of this application. This application has 12 models that match the 12 tables in the USDA National Nutrient Database for Standard Reference (http://www.ars.usda.gov/Services/docs.htm?docid=8964). These models are used to import the data that is parsed from the "ASCII" form of the database. The actual format of the text files are 'windows-1251'.
+Here is the basic gist of this application. This is a testing ground for me to build a gem that imports the USDA National Nutrient Database for Standard Reference  (http://www.ars.usda.gov/Services/docs.htm?docid=8964). The text version of the database is in a none conventional format, delimitated by a '^' and surrounded by '~'s. 
+
+This application has 12 models that match the 12 tables in the Nutrient Database. These models are used to import the data that is parsed from the "ASCII" form of the database. The actual format of the text files are 'windows-1251'.
 
 In the lib/tasks directory there is a rake task file that will parse the Nutrient Database ASCII files, found lib/data directory.
+
+There is a task called 'process_data', it will run the parse method from the 'parse_usda.rb' file. This file will convert the USDA text files to a conventional 'CSV' file. Each file is then imported into its matching table using a CSV reader.
+
+The tasks require the 12 models to already be created in a local database. There are 12 migration files in the 'db' directory. These will help you create the models you need.
 
 If you have any questions please email me at bcmehrman@gmail.com
 
