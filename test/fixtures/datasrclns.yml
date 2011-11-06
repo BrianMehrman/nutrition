@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  NDB_No: MyString
+  Nutr_No: MyString
+  DataSrc_ID: MyString
+
+two:
+  NDB_No: MyString
+  Nutr_No: MyString
+  DataSrc_ID: MyString

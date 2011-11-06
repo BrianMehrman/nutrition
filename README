@@ -1,0 +1,8 @@
+Here is the basic gist of this application. This application has 12 models that match the 12 tables in the USDA National Nutrient Database for Standard Reference (http://www.ars.usda.gov/Services/docs.htm?docid=8964). These models are used to import the data that is parsed from the "ASCII" form of the database. The actual format of the text files are 'windows-1251'.
+
+In the lib/tasks directory there is a rake task file that will parse the Nutrient Database ASCII files, found lib/data directory.
+
+If you have any questions please email me at bcmehrman@gmail.com
+
+
+ 

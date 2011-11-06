@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  Src_Cd: MyString
+  SrcCd_Desc: MyString
+
+two:
+  Src_Cd: MyString
+  SrcCd_Desc: MyString

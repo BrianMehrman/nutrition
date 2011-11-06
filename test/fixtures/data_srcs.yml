@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  DataSrc_ID: MyString
+  Authors: MyString
+  Title: MyString
+  Year: MyString
+  Journal: MyString
+  Vol_City: MyString
+  Issue_State: MyString
+  Start_Page: MyString
+  End_Page: MyString
+
+two:
+  DataSrc_ID: MyString
+  Authors: MyString
+  Title: MyString
+  Year: MyString
+  Journal: MyString
+  Vol_City: MyString
+  Issue_State: MyString
+  Start_Page: MyString
+  End_Page: MyString

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  NDB_No: MyString
+  FdGrp_Cd: MyString
+  Long_Desc: MyString
+  Shrt_Desc: MyString
+  ComName: MyString
+  ManufacName: MyString
+  Survey: MyString
+  Ref_desc: 
+  Refuse: 1
+  SciName: MyString
+  N_Factor: 1.5
+  Pro_Factor: 1.5
+  Fat_Factor: 1.5
+  CHO_Factor: 1.5
+
+two:
+  NDB_No: MyString
+  FdGrp_Cd: MyString
+  Long_Desc: MyString
+  Shrt_Desc: MyString
+  ComName: MyString
+  ManufacName: MyString
+  Survey: MyString
+  Ref_desc: 
+  Refuse: 1
+  SciName: MyString
+  N_Factor: 1.5
+  Pro_Factor: 1.5
+  Fat_Factor: 1.5
+  CHO_Factor: 1.5

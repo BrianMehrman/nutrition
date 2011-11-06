@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  NDB_No: MyString
+  Nutr_No: MyString
+  Nutr_Val: 1.5
+  Num_Data_Pts: 1.5
+  Std_Error: 1.5
+  Src_Cd: MyString
+  Deriv_Cd: MyString
+  Ref_NDB_No: MyString
+  Add_Nutr_Mark: MyString
+  Num_Studies: 1
+  Min: 1.5
+  Max: 1.5
+  DF: 1
+  Low_EB: 1.5
+  Up_EB: 1.5
+  Stat_cmt: MyString
+  AddMod_Date: MyString
+  CC: MyString
+
+two:
+  NDB_No: MyString
+  Nutr_No: MyString
+  Nutr_Val: 1.5
+  Num_Data_Pts: 1.5
+  Std_Error: 1.5
+  Src_Cd: MyString
+  Deriv_Cd: MyString
+  Ref_NDB_No: MyString
+  Add_Nutr_Mark: MyString
+  Num_Studies: 1
+  Min: 1.5
+  Max: 1.5
+  DF: 1
+  Low_EB: 1.5
+  Up_EB: 1.5
+  Stat_cmt: MyString
+  AddMod_Date: MyString
+  CC: MyString

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  NDB_No: MyString
+  Seq: MyString
+  Amount: 1.5
+  Msre_Desc: MyString
+  Gm_Wgt: 1.5
+  Num_Data_Pts: 1
+  Std_Dev: 1.5
+
+two:
+  NDB_No: MyString
+  Seq: MyString
+  Amount: 1.5
+  Msre_Desc: MyString
+  Gm_Wgt: 1.5
+  Num_Data_Pts: 1
+  Std_Dev: 1.5

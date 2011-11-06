@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  Nutr_No: MyString
+  Units: MyString
+  Tagname: MyString
+  NutrDesc: MyString
+  Num_Dec: MyString
+  SR_Order: 1
+
+two:
+  Nutr_No: MyString
+  Units: MyString
+  Tagname: MyString
+  NutrDesc: MyString
+  Num_Dec: MyString
+  SR_Order: 1

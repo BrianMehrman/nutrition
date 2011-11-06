@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  NDB_No: MyString
+  Footnt_No: MyString
+  Footnt_Typ: MyString
+  Nutr_No: MyString
+  Footnt_Txt: MyString
+
+two:
+  NDB_No: MyString
+  Footnt_No: MyString
+  Footnt_Typ: MyString
+  Nutr_No: MyString
+  Footnt_Txt: MyString
