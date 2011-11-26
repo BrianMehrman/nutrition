@@ -7,3 +7,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//
+$(document).ready(function() {
+	$(".fold").hide();
+
+	$("h2.trigger").click(function(){
+		$(this).toggleClass("active").next().slideToggle();
+	});
+
+});

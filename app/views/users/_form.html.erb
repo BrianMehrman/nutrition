@@ -1,0 +1,42 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="actions">
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field"><%= f.label :password %> <%= f.password_field :password %></div>
+  <div class="field"><%= f.label :password_confirmation, 'Password Confirmation'%> <%= f.password_field :password_confirmation %></div>
+ 
+    <div class="input"><%= f.submit %></div>
+    
+ </div>
+ <div id="menu-form">
+  <h2>Meals</h2>
+  <% @user.meals.each do |meal| %>
+    <div id="<%= dom_id(meal) %>" class="field" >
+      <%= count_calories(meal) %>
+      <%= time_ago_in_words(meal.created_at.to_time) %>
+      <%= link_to "show", meal_path(meal), :remote => true %>
+      <%= link_to "edit", edit_meal_path(meal) %>
+    </div>
+  <% end %>
+ </div>
+<% end %>
+
+

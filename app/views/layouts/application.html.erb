@@ -7,8 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="container">
+		<div id="header">
+			<h1>USDA Search</h1>
+      <div id="login">
+        <% if logged_in? %>
+          Hello,
+          <%= link_to current_user.name, user_path(current_user) %>
+          |
+          <%= link_to "Sign Out", sessions_path, :method => :delete %>
+        <% else  %>
+          <%= link_to "Sign Up", new_user_path %>
+          |
+          <%= link_to "Sign In", new_sessions_path %>
+        <% end %>
+      </div>
+		<div class="clear"></div>
+		</div>
+		
+		<div id="nav">
+		<div class="clear"></div>
+		</div>
+	  <div id="search-bar">
+      <%= render 'food/search_bar' %>
+    </div>
+		<div id="content">
 
-<%= yield %>
-
+			<%= yield %>
+		
+		</div>
+	</div>
 </body>
 </html>

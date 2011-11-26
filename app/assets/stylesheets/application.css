@@ -2,6 +2,91 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require 'reset'
  *= require_self
- *= require_tree . 
+ * require_tree . 
 */
+
+body {
+
+}
+
+h1 {
+	line-height:18px;
+	font-size:18px;
+}
+
+#container{
+	width:90%;
+	margin:0 auto;
+}
+
+#header {
+	z-index:11;
+	position:fixed;
+	height: 44px;
+	background-color:#aaa;
+	top:0;
+	left:10px;
+	right:10px;
+	padding:0 10px;
+}
+
+#header h1 {
+  float:left;
+
+}
+
+#login {
+  float:right;
+}
+
+#nav {
+	z-index:12;
+	height:44px;
+	position:fixed;
+	top:2em;
+	left:10px;
+	right:10px;
+	background-color:#ccc;
+}
+
+#search-bar {
+  position:relative;
+  top:80px;
+}
+
+#content {
+	position:relative;
+	top:6em;
+}
+
+#footer {
+	height:500px;
+}
+
+.sub-text {
+  font-size:0.8em;
+}
+.trigger {
+	height:60px;
+	background-color:#aaa;
+}
+.active{
+	background-color:#f99;
+}
+
+.focus {
+	background-color:#fff;
+	color:#000;
+}
+
+.unfocus {
+	background-color:#aaa;
+	color:#555;
+}
+
+
+.clear {
+	clear:both;
+}

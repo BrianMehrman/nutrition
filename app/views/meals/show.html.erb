@@ -1,0 +1,16 @@
+<h2>This meal</h2>
+
+<div>
+  Your Total Calories <%= count_calories(meal) %>
+</div>
+
+<div>
+  What you ate:
+  <ul>
+    <%  @meal.foods.each do |food|  %>
+      <li><%= food.Shrt_Desc %></li>
+    <% end %>
+  </ul>
+</div
+
+

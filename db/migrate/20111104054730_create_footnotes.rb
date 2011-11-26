@@ -1,6 +1,6 @@
 class CreateFootnotes < ActiveRecord::Migration
   def change
-    create_table :footnotes, :primary_key => :NDB_No do |t|
+    create_table :footnotes do |t|
       t.string :NDB_No
       t.string :Footnt_No
       t.string :Footnt_Typ

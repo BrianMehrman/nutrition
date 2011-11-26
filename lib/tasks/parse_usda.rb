@@ -34,7 +34,9 @@
       if field.index('"')
         field.gsub!(/[\"]/,"'")
       end
-      
+      if field.index(',')
+        field.gsub!(/[\,]/,"\,")
+      end
       if field.index(FIELD_ENC) and field.size > 2
         p_fields.push field.chop!.reverse!.chop!.reverse!
       else
@@ -66,7 +68,7 @@
     end
   
     # formate csv data by joining each field with a comma and each row with a line break
-    csv_data = rows.collect { |row| row.join(',') }.join("\n")
+    csv_data = rows.collect { |row| row.join('^') }.join("\n")
   
     # save file to a new csv file
     txt_ext_pop= /^(.+)\.txt/

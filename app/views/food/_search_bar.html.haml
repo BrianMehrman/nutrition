@@ -1,0 +1,5 @@
+= form_tag food_search_url, :remote=>true, :id=>"search-form" do
+  - default = 'search'
+  = text_field_tag :search, default, {:class=>"unfocus",:onfocus => "if(this.value=='#{default}'){this.value='';$(this).removeClass('unfocus',100);$(this).addClass('focus',100);}",:onblur =>"if(this.value==''){this.value='#{default}';$(this).removeClass('focus',100);$(this).addClass('unfocus',500);}"}
+  = submit_tag :search
+%ul#search-results

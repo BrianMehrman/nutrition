@@ -1,0 +1,7 @@
+<div id="<%= dom_id(meal) %>-details">
+  <ul>
+    <% meal.foods.each do |food| %>
+    <li><%= food.simple_name %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,6 +1,6 @@
 class CreateFoodDes < ActiveRecord::Migration
   def change
-    create_table :food_des, :primary_key => :NDB_No do |t|
+    create_table :food_des do |t|
       t.string :NDB_No
       t.string :FdGrp_Cd
       t.string :Long_Desc

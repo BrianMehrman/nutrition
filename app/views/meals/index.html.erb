@@ -1,0 +1,12 @@
+<h2>Meals</h2>
+
+<ul id="meal-list">
+	<% @meals.each do |meal| %>
+		<li id="<%= dom_id(meal) %>">
+			<div>
+				<% time_ago_in_words(meal.created_at.to_time) %>
+				<% count_calories(meal) %>
+			</div>
+		</li>
+	<% end %>
+</ul>

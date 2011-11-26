@@ -1,6 +1,6 @@
 class CreateNutData < ActiveRecord::Migration
   def change
-    create_table :nut_data, :primary_key => :NDB_No do |t|
+    create_table :nut_data do |t|
       t.string :NDB_No
       t.string :Nutr_No
       t.float :Nutr_Val

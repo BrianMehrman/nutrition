@@ -1,6 +1,6 @@
 class CreateNutrDefs < ActiveRecord::Migration
   def change
-    create_table :nutr_defs, :primary_key => :Nutr_No do |t|
+    create_table :nutr_defs do |t|
       t.string :Nutr_No
       t.string :Units
       t.string :Tagname

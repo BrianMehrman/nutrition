@@ -1,6 +1,6 @@
 class CreateLangdescs < ActiveRecord::Migration
   def change
-    create_table :langdescs, :primary_key => :Factor_Code do |t|
+    create_table :langdescs do |t|
       t.string :Factor_Code
       t.string :Description
 

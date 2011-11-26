@@ -1,0 +1,68 @@
+<h1>Food: <%= @food.simple_name %></h1>
+	<p>
+		Weight:
+		<%= @food.weight.amount %> <%= @food.weight.Msre_Desc %> ~  <%= @food.weight.Gm_Wgt  %> g
+	</p>
+<h2 class="trigger">Names</h2>
+<div class="fold">
+  <p>
+    Short Name:
+    <%= @food.Shrt_Desc %>
+  </p>
+	<p>
+		Long Name: 
+		<%= @food.description %>
+	</p>
+		<p>
+		Company: 
+		<%= @food.ManufacName %>
+	</p>
+  <p>
+		Refuse Percentage: 
+		<%= @food.Refuse %>
+	</p>
+	<p>
+		Scientific Name:
+		<%= @food.SciName %>
+	</p>
+</div>
+
+<h2 class="trigger">Protien</h2>
+<div class="fold">
+	<p>
+		Food Group Id: 
+		<%= @food.FdGrp_Cd %>
+	</p>
+	<p>
+		Nitrogen to Protein Factor: 
+		<%= @food.N_Factor %>
+	</p>
+	<p>
+		Calories from Protein: 
+		<%= @food.Pro_Factor %>
+	</p>
+	<p>
+		Calories from fat: 
+		<%= @food.Fat_Factor %>
+	</p>
+	<p>
+		Calories from Carbs: 
+		<%= @food.CHO_Factor %>
+	</p>
+</div>
+
+<h2 class="trigger">Nutrition</h2>
+
+<div class="fold" >
+
+  <p class="sub-text">All Nutrient values are base upon a sample 100g of this food.</p>
+	<table id="nutrient-table">
+			<% @nutrients.each do |n| %>
+			<tr>
+				<td><%= n.definition.NutrDesc %></td>
+				<td><%= n.Nutr_Val %></td>
+        <td><%= n.definition.Units %></td>
+			</tr>
+			<% end %>
+	</table>
+  </div>

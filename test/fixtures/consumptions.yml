@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  food_id: MyString
+  meal_id: 1
+  measurement: 1
+  unit_id: 1
+
+two:
+  food_id: MyString
+  meal_id: 1
+  measurement: 1
+  unit_id: 1

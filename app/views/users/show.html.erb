@@ -1,0 +1,24 @@
+
+
+<p>
+  <b>User Name:</b>
+  <%= @user.name %>
+</p>
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', root_path %>
+
+<div class="user-meals">
+	
+	<h2>Meals</h2>
+	<ul>
+		<% @user.meals.each do |meal| %>
+		  <li><%= link_to time_ago_in_words(meal.created_at.to_time), meal_path(meal)  %></li>
+		<% end %>
+	</ul>
+	
+</div>

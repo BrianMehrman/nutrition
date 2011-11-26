@@ -1,7 +1,29 @@
 Nutrition::Application.routes.draw do
-  resources :imports
+  get "pages/landing"
+
+  get "pages/about"
+
+  get "pages/contact"
+
+  get "pages/demo"
+
+  get "food/index"
+
+  get "food/:id", :controller => "food", :action =>"show", :as => 'food'
+
+  post "food/search", :controller => "food", :action=>"search", :as => "food_search"
   
+  get "landing", :controller => "pages", :action=>"landing", :as => "landing"
+
+  resources :imports
+
+  resources :users
+  resources :meals
+  resource :sessions
+
   get '/import/proc/:id', :controller => "imports", :action => "proc_csv", :as => "import_proc"
+  
+  root :to => 'users#show'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

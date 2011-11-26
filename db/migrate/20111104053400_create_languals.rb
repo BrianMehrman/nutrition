@@ -1,6 +1,6 @@
 class CreateLanguals < ActiveRecord::Migration
   def change
-    create_table :languals, :primary_key => :NDB_No do |t|
+    create_table :languals do |t|
       t.string :NDB_No
       t.string :Factor_Code
 

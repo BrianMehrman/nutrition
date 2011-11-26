@@ -1,14 +1,18 @@
 namespace :process_usda_data do 
   
-  desc "Process Data Files"
-  task :process_data => :environment do
-    load 'lib/tasks/parse_usda.rb'
-    parse
+  # Process data files is now obsolete
+  def parse_data_file(filename)
+      
+    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24', filename)
     
-    puts "USDA Data Processed"
+    file_stream = open(upload, 'r:windows-1252')
+        
+    rows = CSV.parse(file_stream.read, :headers=>false, :col_sep=>'^', :quote_char => '~')
+    
+    rows.each { |row| yield(row) }
   end
   
-  # 1
+  # 11
   desc "Loading Food Description"
   task :load_food_description => :environment do
     require 'csv'
@@ -16,12 +20,11 @@ namespace :process_usda_data do
     # delete existing data
     FoodDes.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24','FOOD_DES.csv')
     logcount = 0
     
-    CSV.foreach(upload, :headers => false) do |row|
+    parse_data_file("FOOD_DES.txt") do |row|
       
-      FoodDes.create(:NDB_No =>row[0],
+      a = FoodDes.create(:NDB_No => row[0].to_s,
                       :FdGrp_Cd =>row[1],
                       :Long_Desc =>row[2],
                       :Shrt_Desc =>row[3],
@@ -36,7 +39,9 @@ namespace :process_usda_data do
                       :Fat_Factor =>row[12],
                       :CHO_Factor =>row[13])
       logcount += 1  
+      #puts a.NDB_No.class
     end
+    
     puts "Successfully added #{logcount} food descriptions."
   end
   
@@ -47,11 +52,11 @@ namespace :process_usda_data do
     
     NutData.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24', 'NUT_DATA.csv')
     logcount = 0
-    CSV.foreach(upload, :headers => false) do |row|
-      NutData.create(:NDB_No => row[0],
-                      :Nutr_No => row[1],
+    
+    parse_data_file('NUT_DATA.txt') do |row|
+      NutData.create(:NDB_No => row[0].to_s,
+                      :Nutr_No => row[1].to_s,
                       :Nutr_Val => row[2],
                       :Num_Data_Pts => row[3],
                       :Std_Error => row[4],
@@ -70,6 +75,7 @@ namespace :process_usda_data do
                       :CC => row[17])
       logcount += 1
     end
+    
     puts "Successfully added #{logcount} nutrient data."               
   end
   
@@ -80,10 +86,10 @@ namespace :process_usda_data do
     
     Weight.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24', 'WEIGHT.csv')
     logcount = 0
-    CSV.foreach(upload, :headers => false) do |row|
-      Weight.create(:NDB_No => row[0],
+    
+    parse_data_file('WEIGHT.txt') do |row|
+      Weight.create(:NDB_No => row[0].to_s,
                     :Seq => row[1],
                     :Amount => row[2],
                     :Msre_Desc => row[3],
@@ -92,6 +98,7 @@ namespace :process_usda_data do
                     :Std_Dev => row[6])
       logcount += 1
     end
+    
     puts "Successfully added #{logcount} weight data."
   end
   
@@ -102,16 +109,17 @@ namespace :process_usda_data do
 
     Footnote.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24', 'FOOTNOTE.csv')
     logcount = 0
-    CSV.foreach(upload, :headers => false) do |row|
-      Footnote.create(:NDB_No => row[0],
+    
+    parse_data_file('FOOTNOTE.txt') do |row|
+      Footnote.create(:NDB_No => row[0].to_s,
                        :Footnt_No => row[1],
                        :Footnt_Typ => row[2],
-                       :Nutr_No => row[3],
+                       :Nutr_No => row[3].to_s,
                        :Footnt_Txt => row[4])
       logcount += 1
     end
+    
     puts "Successfully added #{logcount} footnote data."
   end
   
@@ -122,16 +130,17 @@ namespace :process_usda_data do
     
     FdGroup.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24', 'FD_GROUP.csv')
     logcount = 0
-    CSV.foreach(upload, :headers => false) do |row|
-      FdGroup.create(:FdGrp_Cd => row[0],
+    
+    parse_data_file('FD_GROUP.txt') do |row|
+      FdGroup.create(:FdGrp_Cd => row[0].to_s,
                      :FdGrp_Desc => row[1])
       logcount += 1
     end
+    
     puts "Successfully added #{logcount} food group descriptions."
   end
-
+  
   # 6
   desc "Loading LanguaL Factor"
   task :load_langual_factor => :environment do
@@ -139,13 +148,14 @@ namespace :process_usda_data do
     
     Langual.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24', 'LANGUAL.csv')
     logcount = 0
-    CSV.foreach(upload, :headers => false) do |row|
-      Langual.create(:NDB_No => row[0],
-                     :Factor_Code => row[1])
+    
+    parse_data_file('LANGUAL.txt') do |row|
+      Langual.create(:NDB_No => row[0].to_s,
+                     :Factor_Code => row[1].to_s)
       logcount += 1
     end
+    
     puts "Successfully added #{logcount} Langual Factors."
   end
   
@@ -156,13 +166,14 @@ namespace :process_usda_data do
     
     Langdesc.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib','data','sr24','LANGDESC.csv')
     logcount = 0
-    CSV.foreach(upload, :headers => false) do |row|
-      Langdesc.create(:Factor_Code => row[0],
+    
+    parse_data_file('LANGDESC.txt') do |row|
+     Langdesc.create(:Factor_Code => row[0].to_s,
                       :Description => row[1])
       logcount += 1
     end
+    
     puts "Successfully added #{logcount} Langual Factors Description."
   end
   
@@ -173,10 +184,10 @@ namespace :process_usda_data do
     
     NutrDef.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24', 'NUTR_DEF.csv')
     logcount = 0
-    CSV.foreach(upload, :headers => false) do |row|
-      NutrDef.create(:Nutr_No => row[0],
+    
+    parse_data_file('NUTR_DEF.txt') do |row|
+      NutrDef.create(:Nutr_No => row[0].to_s,
                       :Units => row[1],
                       :Tagname => row[2],
                       :NutrDesc => row[3],
@@ -184,6 +195,7 @@ namespace :process_usda_data do
                       :SR_Order =>row[5])
       logcount += 1
     end
+    
     puts "Successfully added #{logcount} Nutrient Definitions."
   end
   
@@ -194,13 +206,14 @@ namespace :process_usda_data do
     
     SrcCd.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24', 'SRC_CD.csv')
     logcount = 0
-    CSV.foreach(upload, :headers => false) do |row|
-      SrcCd.create(:Src_Cd => row[0],
+    
+    parse_data_file('SRC_CD.txt') do |row|
+      SrcCd.create(:Src_Cd => row[0].to_s,
                    :SrcCd_Desc => row[1])
       logcount += 1
     end
+    
     puts "Successfully added #{logcount} Source Codes."
   end
   
@@ -211,10 +224,10 @@ namespace :process_usda_data do
     
     DerivCd.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24', 'DERIV_CD.csv')
     logcount = 0
-    CSV.foreach(upload, :headers => false) do |row|
-      DerivCd.create(:Deriv_Cd => row[0],
+    
+    parse_data_file('DERIV_CD.txt') do |row|
+      DerivCd.create(:Deriv_Cd => row[0].to_s,
                      :Deriv_Desc => row[1])
       logcount += 1
     end
@@ -228,10 +241,10 @@ namespace :process_usda_data do
     
     DataSrc.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24', 'DATA_SRC.csv')
     logcount = 0
-    CSV.foreach(upload, :headers => false) do |row|
-      DataSrc.create( :DataSrc_ID => row[0],
+    
+    parse_data_file('DATA_SRC.txt') do |row|
+      DataSrc.create( :DataSrc_ID => row[0].to_s,
                       :Authors => row[1],
                       :Title => row[2],
                       :Year => row[3],
@@ -252,31 +265,31 @@ namespace :process_usda_data do
     
     Datasrcln.destroy_all
     
-    upload = File.join(Rails.root.to_s, 'lib', 'data', 'sr24', 'DATSRCLN.csv')
     logcount = 0
-    CSV.foreach(upload, :headers => false) do |row|
-      Datasrcln.create( :NDB_No => row[0],
-                        :Nutr_No => row[1],
-                        :DataSrc_ID => row[2])
+    
+    parse_data_file('DATSRCLN.txt') do |row|
+      Datasrcln.create( :NDB_No => row[0].to_s,
+                        :Nutr_No => row[1].to_s,
+                        :DataSrc_ID => row[2].to_s)
       logcount += 1
     end
     puts "Successfully added #{logcount} Sources of Data Links."
   end
   
   # Run it all
-  task :start => [:process_data,
-                            :load_food_description,
-                            :load_nutrient_data,
-                            :load_weight,
-                            :load_footnote,
-                            :load_food_group_description,
-                            :load_langual_factor,
-                            :load_langual_factors_description,
-                            :load_nutrient_definition,
-                            :load_source_code,
-                            :load_data_derivation_description,
-                            :load_sources_of_data,
-                            :load_sources_of_data_link] do
+  task :start => [  :load_food_description,
+                    :load_nutrient_data,
+                    :load_weight,
+                    :load_footnote,
+                    :load_food_group_description,
+                    :load_langual_factor,
+                    :load_langual_factors_description,
+                    :load_nutrient_definition,
+                    :load_source_code,
+                    :load_data_derivation_description,
+                    :load_sources_of_data,
+                    :load_sources_of_data_link
+                 ] do
     puts "USDA Data added to Database."
   end
 end

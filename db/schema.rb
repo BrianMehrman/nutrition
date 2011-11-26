@@ -11,9 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104055013) do
+ActiveRecord::Schema.define(:version => 20111122050731) do
 
-  create_table "data_srcs", :primary_key => "DataSrc_ID", :force => true do |t|
+  create_table "consumptions", :force => true do |t|
+    t.string   "food_id"
+    t.integer  "meal_id"
+    t.integer  "measurement"
+    t.integer  "unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "data_srcs", :force => true do |t|
+    t.string   "DataSrc_ID"
     t.string   "Authors"
     t.string   "Title"
     t.string   "Year"
@@ -26,26 +36,30 @@ ActiveRecord::Schema.define(:version => 20111104055013) do
     t.datetime "updated_at"
   end
 
-  create_table "datasrclns", :primary_key => "NDB_No", :force => true do |t|
+  create_table "datasrclns", :force => true do |t|
+    t.string   "NDB_No"
     t.string   "Nutr_No"
     t.string   "DataSrc_ID"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "deriv_cds", :primary_key => "Deriv_Cd", :force => true do |t|
+  create_table "deriv_cds", :force => true do |t|
+    t.string   "Deriv_Cd"
     t.string   "Deriv_Desc"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "fd_groups", :primary_key => "FdGrp_Cd", :force => true do |t|
+  create_table "fd_groups", :force => true do |t|
+    t.string   "FdGrp_Cd"
     t.string   "FdGrp_Desc"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "food_des", :primary_key => "NDB_No", :force => true do |t|
+  create_table "food_des", :force => true do |t|
+    t.string   "NDB_No"
     t.string   "FdGrp_Cd"
     t.string   "Long_Desc"
     t.string   "Shrt_Desc"
@@ -63,7 +77,8 @@ ActiveRecord::Schema.define(:version => 20111104055013) do
     t.datetime "updated_at"
   end
 
-  create_table "footnotes", :primary_key => "NDB_No", :force => true do |t|
+  create_table "footnotes", :force => true do |t|
+    t.string   "NDB_No"
     t.string   "Footnt_No"
     t.string   "Footnt_Typ"
     t.string   "Nutr_No"
@@ -82,19 +97,28 @@ ActiveRecord::Schema.define(:version => 20111104055013) do
     t.datetime "updated_at"
   end
 
-  create_table "langdescs", :primary_key => "Factor_Code", :force => true do |t|
+  create_table "langdescs", :force => true do |t|
+    t.string   "Factor_Code"
     t.string   "Description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "languals", :primary_key => "NDB_No", :force => true do |t|
+  create_table "languals", :force => true do |t|
+    t.string   "NDB_No"
     t.string   "Factor_Code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "nut_data", :primary_key => "NDB_No", :force => true do |t|
+  create_table "meals", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "nut_data", :force => true do |t|
+    t.string   "NDB_No"
     t.string   "Nutr_No"
     t.float    "Nutr_Val"
     t.float    "Num_Data_Pts"
@@ -116,7 +140,8 @@ ActiveRecord::Schema.define(:version => 20111104055013) do
     t.datetime "updated_at"
   end
 
-  create_table "nutr_defs", :primary_key => "Nutr_No", :force => true do |t|
+  create_table "nutr_defs", :force => true do |t|
+    t.string   "Nutr_No"
     t.string   "Units"
     t.string   "Tagname"
     t.string   "NutrDesc"
@@ -126,13 +151,31 @@ ActiveRecord::Schema.define(:version => 20111104055013) do
     t.datetime "updated_at"
   end
 
-  create_table "src_cds", :primary_key => "Src_Cd", :force => true do |t|
+  create_table "src_cds", :force => true do |t|
+    t.string   "Src_Cd"
     t.string   "SrcCd_Desc"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "weights", :primary_key => "NDB_No", :force => true do |t|
+  create_table "tracks", :force => true do |t|
+    t.string   "name"
+    t.string   "nutrient"
+    t.integer  "goal"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "weights", :force => true do |t|
+    t.string   "NDB_No"
     t.string   "Seq"
     t.float    "Amount"
     t.string   "Msre_Desc"

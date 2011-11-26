@@ -1,6 +1,6 @@
 class CreateDataSrcs < ActiveRecord::Migration
   def change
-    create_table :data_srcs, :primary_key => :DataSrc_ID do |t|
+    create_table :data_srcs do |t|
       t.string :DataSrc_ID
       t.string :Authors
       t.string :Title

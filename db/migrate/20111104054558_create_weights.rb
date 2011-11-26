@@ -1,6 +1,6 @@
 class CreateWeights < ActiveRecord::Migration
   def change
-    create_table :weights, :primary_key => :NDB_No do |t|
+    create_table :weights do |t|
       t.string :NDB_No
       t.string :Seq
       t.float :Amount
